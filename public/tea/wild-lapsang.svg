@@ -1,0 +1,17 @@
+<svg width="1200" height="1400" viewBox="0 0 1200 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1400" fill="#121212"/>
+  <rect x="70" y="70" width="1060" height="1260" rx="48" fill="url(#bg)" stroke="rgba(255,255,255,0.12)"/>
+  <circle cx="930" cy="260" r="180" fill="#7C3E1D" fill-opacity="0.38"/>
+  <circle cx="330" cy="1040" r="260" fill="#2D4A35" fill-opacity="0.45"/>
+  <path d="M300 990C420 760 550 630 745 540C802 513 880 511 909 567C948 641 897 716 827 741C719 780 623 841 522 1001C468 1087 365 1098 315 1043C295 1021 286 1006 300 990Z" fill="#D99B52" fill-opacity="0.92"/>
+  <path d="M374 880C493 796 603 735 742 666" stroke="#FFF1D6" stroke-opacity="0.35" stroke-width="18" stroke-linecap="round"/>
+  <text x="120" y="170" fill="#F5F5F5" font-family="Arial, sans-serif" font-size="34" letter-spacing="8">VELMIOR</text>
+  <text x="120" y="1220" fill="#F5F5F5" font-family="Georgia, serif" font-size="72">Wild Lapsang</text>
+  <text x="120" y="1288" fill="#D4D4D4" font-family="Arial, sans-serif" font-size="30" letter-spacing="3">Smoked black tea release</text>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="70" x2="600" y2="1330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A1715"/>
+      <stop offset="1" stop-color="#0D0F0E"/>
+    </linearGradient>
+  </defs>
+</svg>

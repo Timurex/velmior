@@ -1,0 +1,18 @@
+<svg width="1200" height="1400" viewBox="0 0 1200 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1400" fill="#101010"/>
+  <rect x="70" y="70" width="1060" height="1260" rx="48" fill="url(#bg)" stroke="rgba(255,255,255,0.12)"/>
+  <circle cx="950" cy="260" r="210" fill="#7A3C1F" fill-opacity="0.28"/>
+  <circle cx="260" cy="1110" r="280" fill="#2E3432" fill-opacity="0.35"/>
+  <path d="M295 995C404 805 538 661 729 554C805 512 905 507 946 586C991 673 927 783 816 824C703 865 608 929 500 1085C452 1155 335 1154 289 1095C266 1066 273 1032 295 995Z" fill="#C07A3C"/>
+  <path d="M346 901C506 785 635 676 806 561" stroke="#FFDFC0" stroke-opacity="0.34" stroke-width="18" stroke-linecap="round"/>
+  <path d="M438 1064C605 910 721 809 830 714" stroke="#FFF2E2" stroke-opacity="0.18" stroke-width="10" stroke-linecap="round"/>
+  <text x="120" y="170" fill="#F5F5F5" font-family="Arial, sans-serif" font-size="34" letter-spacing="8">VELMIOR</text>
+  <text x="120" y="1190" fill="#F5F5F5" font-family="Georgia, serif" font-size="70">Zhengyan Rou Gui</text>
+  <text x="120" y="1260" fill="#D4D4D4" font-family="Arial, sans-serif" font-size="28" letter-spacing="3">Collector grade rock tea</text>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="70" x2="600" y2="1330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#191514"/>
+      <stop offset="1" stop-color="#0F1112"/>
+    </linearGradient>
+  </defs>
+</svg>
