@@ -293,9 +293,9 @@ function MobileLocaleButton({ locale, setLocale, label }) {
 
 function AutoStorySlider({ t }) {
   const slides = [
-    { image: '/story/harvest.svg', ...t.sliderSlides[0] },
-    { image: '/story/prep.svg', ...t.sliderSlides[1] },
-    { image: '/story/pack.svg', ...t.sliderSlides[2] },
+    { image: '/story/harvest.png', ...t.sliderSlides[0] },
+    { image: '/story/prep.png', ...t.sliderSlides[1] },
+    { image: '/story/pack.png', ...t.sliderSlides[2] },
   ];
   const [index, setIndex] = useState(0);
 

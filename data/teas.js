@@ -2,11 +2,11 @@ export const teas = [
   {
     id: 1,
     slug: 'wild-lapsang-souchong',
-    image: '/tea/wild-lapsang.svg',
+    image: '/tea/wild-lapsang.png',
     gallery: [
-      '/gallery/wild-lapsang-leaf.svg',
-      '/gallery/wild-lapsang-cup.svg',
-      '/gallery/wild-lapsang-pack.svg',
+      '/gallery/wild-lapsang-leaf.png',
+      '/gallery/wild-lapsang-cup.png',
+      '/gallery/wild-lapsang-pack.png',
     ],
     badge: 'Limited Release',
     origin: 'Tongmu-inspired smoked black tea · China',
@@ -58,11 +58,11 @@ export const teas = [
   {
     id: 2,
     slug: 'rou-gui',
-    image: '/tea/rou-gui.svg',
+    image: '/tea/rou-gui.png',
     gallery: [
-      '/gallery/rou-gui-leaf.svg',
-      '/gallery/rou-gui-cup.svg',
-      '/gallery/rou-gui-pack.svg',
+      '/gallery/rou-gui-leaf.png',
+      '/gallery/rou-gui-cup.png',
+      '/gallery/rou-gui-pack.png',
     ],
     badge: 'Small Batch',
     origin: 'Wuyi oolong · Fujian',
@@ -114,11 +114,11 @@ export const teas = [
   {
     id: 3,
     slug: 'zhengyan-rou-gui',
-    image: '/tea/zhengyan-rou-gui.svg',
+    image: '/tea/zhengyan-rou-gui.png',
     gallery: [
-      '/gallery/zhengyan-leaf.svg',
-      '/gallery/zhengyan-cup.svg',
-      '/gallery/zhengyan-pack.svg',
+      '/gallery/zhengyan-leaf.png',
+      '/gallery/zhengyan-cup.png',
+      '/gallery/zhengyan-pack.png',
     ],
     badge: 'Collector Grade',
     origin: 'Core Wuyi rock tea',
