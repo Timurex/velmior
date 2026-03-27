@@ -9,6 +9,7 @@ import CartDrawer from '@/components/CartDrawer';
 import VelmiorLogo from '@/components/VelmiorLogo';
 import FlyToCartImage from '@/components/FlyToCartImage';
 import Reveal from '@/components/Reveal';
+import MobileLocaleSelect from '@/components/MobileLocaleSelect';
 
 const translations = {
   en: {
@@ -273,24 +274,6 @@ const translations = {
 
 const localeOrder = ['en', 'ru', 'he'];
 
-function MobileLocaleButton({ locale, setLocale, label }) {
-  const cycleLocale = () => {
-    const current = localeOrder.indexOf(locale);
-    const next = localeOrder[(current + 1) % localeOrder.length];
-    setLocale(next);
-  };
-
-  return (
-    <button
-      onClick={cycleLocale}
-      aria-label={label}
-      className="glass-chip flex items-center gap-2 px-3 py-2 text-[11px] uppercase tracking-[0.22em] md:hidden"
-    >
-      <span>{locale}</span>
-    </button>
-  );
-}
-
 function AutoStorySlider({ t }) {
   const slides = [
     { image: '/story/harvest.png', ...t.sliderSlides[0] },
@@ -323,7 +306,7 @@ function AutoStorySlider({ t }) {
               {slides.map((slide, slideIndex) => (
                 <div
                   key={slide.title}
-                  className={`absolute inset-0 transition-all duration-700 ease-out ${slideIndex === index ? 'opacity-100 scale-100' : 'pointer-events-none opacity-0 scale-[1.03]'}`}
+                  className={`absolute inset-0 transition-all duration-[1200ms] ease-out ${slideIndex === index ? 'opacity-100 scale-100 translate-x-0' : slideIndex < index ? 'pointer-events-none opacity-0 scale-[1.04] -translate-x-4' : 'pointer-events-none opacity-0 scale-[1.02] translate-x-4'}`}
                 >
                   <Image src={slide.image} alt={slide.title} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
@@ -428,7 +411,7 @@ function StoreShell() {
 
       <header className="sticky top-0 z-30 border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:gap-4 md:px-6">
-          <VelmiorLogo />
+          <VelmiorLogo compact />
           <nav className="hidden min-w-0 items-center gap-7 md:flex">
             {nav.map(([id, label]) => (
               <a key={id} href={`#${id}`} className="text-sm text-neutral-300 transition hover:text-white">
@@ -437,8 +420,8 @@ function StoreShell() {
             ))}
           </nav>
           <div className="flex items-center gap-2 md:gap-3">
-            <button onClick={() => setMenuOpen(true)} className="glass-chip px-4 py-2 text-sm md:hidden">{t.menu}</button>
-            <MobileLocaleButton locale={locale} setLocale={setLocale} label={t.mobileLang} />
+            <button onClick={() => setMenuOpen(true)} className="glass-chip flex min-w-[82px] items-center justify-center px-4 py-2 text-center text-sm md:hidden">{t.menu}</button>
+            <MobileLocaleSelect locale={locale} setLocale={setLocale} label={t.mobileLang} />
             <div className="hidden rounded-full border border-white/10 p-1 md:flex">
               {localeOrder.map((code) => (
                 <button

@@ -5,18 +5,33 @@ import { teas } from '@/data/teas';
 
 const CartContext = createContext(null);
 
+const defaultCheckout = {
+  shippingType: 'courier',
+  paymentMethod: 'Credit Card',
+  note: '',
+  fullName: '',
+  phone: '',
+  address: '',
+  city: '',
+  postalCode: '',
+};
+
 export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
+  const [checkout, setCheckout] = useState(defaultCheckout);
   const [isOpen, setIsOpen] = useState(false);
   const [justAddedId, setJustAddedId] = useState(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     try {
-      const raw = window.localStorage.getItem('velmior-cart');
-      if (raw) setItems(JSON.parse(raw));
+      const rawCart = window.localStorage.getItem('velmior-cart');
+      const rawCheckout = window.localStorage.getItem('velmior-checkout');
+      if (rawCart) setItems(JSON.parse(rawCart));
+      if (rawCheckout) setCheckout({ ...defaultCheckout, ...JSON.parse(rawCheckout) });
     } catch {
       setItems([]);
+      setCheckout(defaultCheckout);
     } finally {
       setIsReady(true);
     }
@@ -26,6 +41,11 @@ export function CartProvider({ children }) {
     if (!isReady) return;
     window.localStorage.setItem('velmior-cart', JSON.stringify(items));
   }, [items, isReady]);
+
+  useEffect(() => {
+    if (!isReady) return;
+    window.localStorage.setItem('velmior-checkout', JSON.stringify(checkout));
+  }, [checkout, isReady]);
 
   const addToCart = (tea) => {
     setItems((prev) => {
@@ -45,6 +65,10 @@ export function CartProvider({ children }) {
       return;
     }
     setItems((prev) => prev.map((item) => item.slug === slug ? { ...item, quantity: nextQuantity } : item));
+  };
+
+  const updateCheckout = (patch) => {
+    setCheckout((prev) => ({ ...prev, ...patch }));
   };
 
   const clearCart = () => setItems([]);
@@ -76,6 +100,8 @@ export function CartProvider({ children }) {
       setIsOpen,
       justAddedId,
       isReady,
+      checkout,
+      updateCheckout,
     }}>
       {children}
     </CartContext.Provider>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111214"/>
+      <stop offset="100%" stop-color="#050506"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="182" cy="315" r="74" fill="none" stroke="#f5f5f4" stroke-opacity="0.15" stroke-width="4"/>
+  <path d="M182 254v122M135 315h94" stroke="#f5f5f4" stroke-opacity="0.55" stroke-width="6" stroke-linecap="round"/>
+  <text x="300" y="255" fill="#d4d4d8" font-size="22" font-family="Georgia, serif" letter-spacing="8">VELMIOR TEA ATELIER</text>
+  <text x="300" y="340" fill="#fafafa" font-size="74" font-family="Georgia, serif">VELMIOR</text>
+  <text x="300" y="410" fill="#a1a1aa" font-size="28" font-family="Arial, sans-serif">Premium loose leaf tea for Israel</text>
+</svg>

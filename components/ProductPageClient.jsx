@@ -8,6 +8,7 @@ import CartDrawer from '@/components/CartDrawer';
 import FlyToCartImage from '@/components/FlyToCartImage';
 import ProductGallery from '@/components/ProductGallery';
 import Reveal from '@/components/Reveal';
+import MobileLocaleSelect from '@/components/MobileLocaleSelect';
 
 const labels = {
   en: {
@@ -71,24 +72,6 @@ const labels = {
 
 const localeOrder = ['en', 'ru', 'he'];
 
-function MobileLocaleButton({ locale, setLocale, label }) {
-  const cycleLocale = () => {
-    const current = localeOrder.indexOf(locale);
-    const next = localeOrder[(current + 1) % localeOrder.length];
-    setLocale(next);
-  };
-
-  return (
-    <button
-      onClick={cycleLocale}
-      aria-label={label}
-      className="glass-chip flex items-center gap-2 px-3 py-2 text-[11px] uppercase tracking-[0.22em] md:hidden"
-    >
-      <span>{locale}</span>
-    </button>
-  );
-}
-
 export default function ProductPageClient({ tea }) {
   const [locale, setLocale] = useState('en');
   const { addToCart, justAddedId, setIsOpen, itemCount } = useCart();
@@ -114,10 +97,10 @@ export default function ProductPageClient({ tea }) {
     <div dir={locale === 'he' ? 'rtl' : 'ltr'} className="min-h-screen overflow-x-clip bg-neutral-950 text-neutral-100">
       <FlyToCartImage animation={animation} />
       <header className="sticky top-0 z-30 border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:gap-4 md:px-6">
-          <VelmiorLogo />
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-4 md:gap-4 md:px-6">
+          <VelmiorLogo compact />
           <div className="flex items-center gap-2 md:gap-3">
-            <MobileLocaleButton locale={locale} setLocale={setLocale} label={t.mobileLang} />
+            <MobileLocaleSelect locale={locale} setLocale={setLocale} label={t.mobileLang} />
             <div className="hidden rounded-full border border-white/10 p-1 md:flex">
               {localeOrder.map((code) => (
                 <button key={code} onClick={() => setLocale(code)} className={`rounded-full px-3 py-1 text-xs uppercase tracking-[0.25em] ${locale === code ? 'bg-white text-black' : 'text-neutral-300'}`}>{code}</button>
