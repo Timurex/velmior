@@ -6,6 +6,12 @@ import { useCart } from '@/components/CartContext';
 import VelmiorLogo from '@/components/VelmiorLogo';
 
 const shippingMap = { courier: 30, pickup: 18, gift: 45 };
+const shippingOptions = [
+  { key: 'courier', label: 'Courier delivery', text: 'Fast home delivery across Israel', price: 30 },
+  { key: 'pickup', label: 'Pickup point', text: 'Lower cost, convenient collection point', price: 18 },
+  { key: 'gift', label: 'Gift order', text: 'Priority packaging and gift-ready handling', price: 45 },
+];
+
 const shippingLabel = {
   courier: 'Courier delivery',
   pickup: 'Pickup point',
@@ -21,9 +27,17 @@ export default function CheckoutPageClient() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <header className="border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
-          <VelmiorLogo compact />
-          <Link href="/cart" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Back to cart</Link>
+        <div className="mx-auto max-w-7xl px-4 py-4 md:px-6">
+          <div className="hidden items-center justify-between gap-3 md:flex">
+            <VelmiorLogo compact />
+            <Link href="/cart" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Back to cart</Link>
+          </div>
+          <div className="md:hidden">
+            <div className="flex items-center justify-between gap-3">
+              <VelmiorLogo compact />
+              <Link href="/cart" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Cart</Link>
+            </div>
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-16">
@@ -72,6 +86,26 @@ export default function CheckoutPageClient() {
                 <span className="text-sm text-neutral-300">Order note</span>
                 <textarea value={checkout.note} onChange={(e) => updateCheckout({ note: e.target.value })} rows={4} className="field-input" placeholder="Gift note, delivery note or special request" />
               </label>
+            </div>
+            <div className="mt-8">
+              <div className="text-xs uppercase tracking-[0.26em] text-neutral-500">Delivery method</div>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                {shippingOptions.map((option) => {
+                  const active = checkout.shippingType === option.key;
+                  return (
+                    <button
+                      key={option.key}
+                      type="button"
+                      onClick={() => updateCheckout({ shippingType: option.key })}
+                      className={`rounded-[1.5rem] border p-4 text-left transition ${active ? 'border-white bg-white text-black' : 'border-white/10 bg-neutral-950 hover:border-white/30'}`}
+                    >
+                      <div className="text-sm font-medium">{option.label}</div>
+                      <div className={`mt-2 text-xs leading-6 ${active ? 'text-black/70' : 'text-neutral-400'}`}>{option.text}</div>
+                      <div className="mt-3 text-sm font-semibold">₪{option.price}</div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
             <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-neutral-950 p-4 text-sm leading-7 text-neutral-300">
               Selected delivery: <span className="font-medium text-white">{shippingLabel[checkout.shippingType] || 'Courier delivery'}</span>

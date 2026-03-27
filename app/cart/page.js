@@ -19,9 +19,17 @@ export default function CartPage() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <header className="border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-6">
-          <VelmiorLogo compact />
-          <Link href="/" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Continue shopping</Link>
+        <div className="mx-auto max-w-7xl px-4 py-4 md:px-6">
+          <div className="hidden items-center justify-between gap-3 md:flex">
+            <VelmiorLogo compact />
+            <Link href="/" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Continue shopping</Link>
+          </div>
+          <div className="md:hidden">
+            <div className="flex items-center justify-between gap-3">
+              <VelmiorLogo compact />
+              <Link href="/" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Shop</Link>
+            </div>
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-16">

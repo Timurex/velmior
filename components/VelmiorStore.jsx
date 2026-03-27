@@ -27,6 +27,11 @@ const translations = {
     forPartners: 'Wholesale & partnerships',
     menu: 'Menu',
     mobileLang: 'Language',
+    release: 'Release',
+    remaining: 'Remaining',
+    lowStock: 'Low stock',
+    soldOut: 'Sold out',
+    noReturn: 'This batch will not return',
     nav: [
       ['collection', 'Collection'],
       ['story', 'Our process'],
@@ -113,6 +118,11 @@ const translations = {
     forPartners: 'Опт и сотрудничество',
     menu: 'Меню',
     mobileLang: 'Язык',
+    release: 'Релиз',
+    remaining: 'Остаток',
+    lowStock: 'Почти закончился',
+    soldOut: 'Распродано',
+    noReturn: 'Этот batch не вернётся',
     nav: [
       ['collection', 'Каталог'],
       ['story', 'Производство'],
@@ -199,6 +209,11 @@ const translations = {
     forPartners: 'סיטונאות ושיתופי פעולה',
     menu: 'תפריט',
     mobileLang: 'שפה',
+    release: 'מהדורה',
+    remaining: 'נותרו',
+    lowStock: 'מלאי נמוך',
+    soldOut: 'אזל מהמלאי',
+    noReturn: 'האצווה הזו לא תחזור',
     nav: [
       ['collection', 'קטלוג'],
       ['story', 'התהליך שלנו'],
@@ -410,37 +425,55 @@ function StoreShell() {
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} openCart={() => setIsOpen(true)} locale={locale} setLocale={setLocale} t={t} itemCount={itemCount} />
 
       <header className="sticky top-0 z-30 border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:gap-4 md:px-6">
-          <VelmiorLogo compact />
-          <nav className="hidden min-w-0 items-center gap-7 md:flex">
-            {nav.map(([id, label]) => (
-              <a key={id} href={`#${id}`} className="text-sm text-neutral-300 transition hover:text-white">
-                {label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2 md:gap-3">
-            <button onClick={() => setMenuOpen(true)} className="glass-chip flex min-w-[82px] items-center justify-center px-4 py-2 text-center text-sm md:hidden">{t.menu}</button>
-            <MobileLocaleSelect locale={locale} setLocale={setLocale} label={t.mobileLang} />
-            <div className="hidden rounded-full border border-white/10 p-1 md:flex">
-              {localeOrder.map((code) => (
-                <button
-                  key={code}
-                  onClick={() => setLocale(code)}
-                  className={`rounded-full px-3 py-1 text-xs uppercase tracking-[0.25em] ${locale === code ? 'bg-white text-black' : 'text-neutral-300'}`}
-                >
-                  {code}
-                </button>
+        <div className="mx-auto max-w-7xl px-4 py-4 md:px-6">
+          <div className="hidden items-center justify-between gap-4 md:flex">
+            <VelmiorLogo compact />
+            <nav className="min-w-0 items-center gap-7 md:flex">
+              {nav.map(([id, label]) => (
+                <a key={id} href={`#${id}`} className="text-sm text-neutral-300 transition hover:text-white">
+                  {label}
+                </a>
               ))}
+            </nav>
+            <div className="flex items-center gap-3">
+              <div className="rounded-full border border-white/10 p-1">
+                {localeOrder.map((code) => (
+                  <button
+                    key={code}
+                    onClick={() => setLocale(code)}
+                    className={`rounded-full px-3 py-1 text-xs uppercase tracking-[0.25em] ${locale === code ? 'bg-white text-black' : 'text-neutral-300'}`}
+                  >
+                    {code}
+                  </button>
+                ))}
+              </div>
+              <button
+                ref={cartButtonRef}
+                onClick={() => setIsOpen(true)}
+                className={`rounded-full border border-white/15 px-4 py-2 text-sm transition hover:border-white/40 hover:bg-white/5 ${justAddedId ? 'cart-badge-pop' : ''}`}
+              >
+                {t.cart}
+                <span className="ml-2 rounded-full bg-white px-2 py-0.5 text-xs text-black">{itemCount}</span>
+              </button>
             </div>
-            <button
-              ref={cartButtonRef}
-              onClick={() => setIsOpen(true)}
-              className={`rounded-full border border-white/15 px-4 py-2 text-sm transition hover:border-white/40 hover:bg-white/5 ${justAddedId ? 'cart-badge-pop' : ''}`}
-            >
-              {t.cart}
-              <span className="ml-2 rounded-full bg-white px-2 py-0.5 text-xs text-black">{itemCount}</span>
-            </button>
+          </div>
+
+          <div className="md:hidden">
+            <div className="flex items-center justify-between gap-3">
+              <VelmiorLogo compact />
+              <button
+                ref={cartButtonRef}
+                onClick={() => setIsOpen(true)}
+                className={`rounded-full border border-white/15 px-4 py-2 text-sm transition hover:border-white/40 hover:bg-white/5 ${justAddedId ? 'cart-badge-pop' : ''}`}
+              >
+                {t.cart}
+                <span className="ml-2 rounded-full bg-white px-2 py-0.5 text-xs text-black">{itemCount}</span>
+              </button>
+            </div>
+            <div className="mt-3 grid grid-cols-[1fr_auto] gap-3">
+              <button onClick={() => setMenuOpen(true)} className="glass-chip flex h-10 items-center justify-center px-4 text-center text-sm">{t.menu}</button>
+              <MobileLocaleSelect locale={locale} setLocale={setLocale} label={t.mobileLang} />
+            </div>
           </div>
         </div>
       </header>
@@ -516,6 +549,11 @@ function StoreShell() {
                     </div>
                     <h3 className="mt-6 display-serif text-3xl leading-tight">{tea.name[locale]}</h3>
                     <p className="mt-4 text-base leading-7 text-neutral-200">{tea.short[locale]}</p>
+                    <div className="mt-4 grid gap-2 text-xs text-neutral-400">
+                      <div><span className="uppercase tracking-[0.2em] text-neutral-500">{t.release}</span><span className="ml-2 text-neutral-200">{tea.batch}</span></div>
+                      <div><span className="uppercase tracking-[0.2em] text-neutral-500">Harvest</span><span className="ml-2 text-neutral-200">{tea.harvest}</span></div>
+                      <div>{tea.status === 'soldout' ? t.noReturn : tea.status === 'low' ? `${t.lowStock} — ${tea.remainingUnits} left` : `${t.remaining}: ${tea.remainingUnits} / ${tea.totalUnits}`}</div>
+                    </div>
                     <p className="mt-3 text-sm leading-6 text-neutral-400">{t.cardPrompt}</p>
                     <div className="mt-8 flex items-end justify-between gap-4">
                       <div>
@@ -527,7 +565,7 @@ function StoreShell() {
                         <div className="text-xs text-neutral-500">{t.wholesaleHint}</div>
                       </div>
                       <div className="grid gap-3">
-                        <button onClick={(event) => animateAdd(event, tea)} className={`rounded-full border px-5 py-2 text-sm transition ${isJustAdded ? 'border-white bg-white text-black' : 'border-white/15 hover:border-white/40 hover:bg-white/5'}`}>{isJustAdded ? t.added : t.add}</button>
+                        <button disabled={tea.status === 'soldout'} onClick={(event) => animateAdd(event, tea)} className={`rounded-full border px-5 py-2 text-sm transition ${tea.status === 'soldout' ? 'cursor-not-allowed border-white/10 text-neutral-500' : isJustAdded ? 'border-white bg-white text-black' : 'border-white/15 hover:border-white/40 hover:bg-white/5'}`}>{tea.status === 'soldout' ? t.soldOut : isJustAdded ? t.added : t.add}</button>
                         <Link href={`/product/${tea.slug}`} className="rounded-full bg-white px-5 py-2 text-center text-sm font-medium text-black transition hover:opacity-90">{t.details}</Link>
                       </div>
                     </div>

@@ -14,7 +14,7 @@ export default function MobileLocaleSelect({ locale, setLocale, label = 'Languag
         aria-label={label}
         value={locale}
         onChange={(event) => setLocale(event.target.value)}
-        className="glass-chip min-w-[74px] appearance-none px-3 py-2 pr-8 text-center text-[11px] font-medium uppercase tracking-[0.22em] outline-none"
+        className="glass-chip h-10 min-w-[64px] appearance-none px-3 py-2 pr-7 text-center text-[10px] font-medium uppercase tracking-[0.22em] outline-none"
       >
         {locales.map((item) => (
           <option key={item.value} value={item.value} className="bg-neutral-950 text-neutral-100">
@@ -22,7 +22,7 @@ export default function MobileLocaleSelect({ locale, setLocale, label = 'Languag
           </option>
         ))}
       </select>
-      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-neutral-400">▾</span>
+      <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-neutral-400">▾</span>
     </label>
   );
 }
