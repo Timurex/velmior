@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { teas } from '@/data/teas';
+import { releases } from '@/data/teas';
 
 const CartContext = createContext(null);
 
@@ -47,43 +47,42 @@ export function CartProvider({ children }) {
     window.localStorage.setItem('velmior-checkout', JSON.stringify(checkout));
   }, [checkout, isReady]);
 
-  const addToCart = (tea) => {
+  const addToCart = (tea, sizeKey = tea.sizes?.[0]?.key || '50g') => {
     setItems((prev) => {
-      const existing = prev.find((item) => item.slug === tea.slug);
+      const existing = prev.find((item) => item.slug === tea.slug && item.sizeKey === sizeKey);
       if (existing) {
-        return prev.map((item) => item.slug === tea.slug ? { ...item, quantity: item.quantity + 1 } : item);
+        return prev.map((item) => item.slug === tea.slug && item.sizeKey === sizeKey ? { ...item, quantity: item.quantity + 1 } : item);
       }
-      return [...prev, { slug: tea.slug, quantity: 1 }];
+      return [...prev, { slug: tea.slug, sizeKey, quantity: 1 }];
     });
-    setJustAddedId(tea.slug);
+    setJustAddedId(`${tea.slug}-${sizeKey}`);
     window.setTimeout(() => setJustAddedId(null), 900);
   };
 
-  const updateQuantity = (slug, nextQuantity) => {
+  const updateQuantity = (slug, sizeKey, nextQuantity) => {
     if (nextQuantity <= 0) {
-      setItems((prev) => prev.filter((item) => item.slug !== slug));
+      setItems((prev) => prev.filter((item) => !(item.slug === slug && item.sizeKey === sizeKey)));
       return;
     }
-    setItems((prev) => prev.map((item) => item.slug === slug ? { ...item, quantity: nextQuantity } : item));
+    setItems((prev) => prev.map((item) => item.slug === slug && item.sizeKey === sizeKey ? { ...item, quantity: nextQuantity } : item));
   };
 
-  const updateCheckout = (patch) => {
-    setCheckout((prev) => ({ ...prev, ...patch }));
-  };
-
+  const updateCheckout = (patch) => setCheckout((prev) => ({ ...prev, ...patch }));
   const clearCart = () => setItems([]);
 
-  const detailedItems = useMemo(() => items
-    .map((item) => {
-      const tea = teas.find((entry) => entry.slug === item.slug);
-      if (!tea) return null;
-      return {
-        ...tea,
-        quantity: item.quantity,
-        lineTotal: tea.retailPrice * item.quantity,
-      };
-    })
-    .filter(Boolean), [items]);
+  const detailedItems = useMemo(() => items.map((item) => {
+    const tea = releases.find((entry) => entry.slug === item.slug);
+    if (!tea) return null;
+    const size = tea.sizes.find((entry) => entry.key === item.sizeKey) || tea.sizes[0];
+    return {
+      ...tea,
+      quantity: item.quantity,
+      sizeKey: size.key,
+      sizeLabel: size.label,
+      unitPrice: size.price,
+      lineTotal: size.price * item.quantity,
+    };
+  }).filter(Boolean), [items]);
 
   const itemCount = detailedItems.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = detailedItems.reduce((sum, item) => sum + item.lineTotal, 0);

@@ -1,13 +1,5 @@
-import { notFound } from 'next/navigation';
-import { getTeaBySlug, teas } from '@/data/teas';
-import ProductPageClient from '@/components/ProductPageClient';
+import { redirect } from 'next/navigation';
 
-export function generateStaticParams() {
-  return teas.map((tea) => ({ slug: tea.slug }));
-}
-
-export default function ProductPage({ params }) {
-  const tea = getTeaBySlug(params.slug);
-  if (!tea) notFound();
-  return <ProductPageClient tea={tea} />;
+export default function LegacyProductPage({ params }) {
+  redirect(`/release/${params.slug}`);
 }

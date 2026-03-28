@@ -1,16 +1,15 @@
-# Velmior Tea Site v2
+# VELMIOR v8
 
-Ready-to-run Next.js storefront for IntelliJ IDEA.
+Release-based premium tea storefront built with Next.js and Tailwind.
 
-## Included
-- Homepage with premium catalog
-- Product photos on each card
-- Individual product pages
-- Add-to-cart animation and visible cart drawer
-- Cart drawer with quantity controls
-- Checkout page with delivery type selection
-- EN / RU / HE language switching
-- Retail + wholesale prices
+## Routes
+- `/` — release-focused homepage
+- `/releases` — current and archived public releases
+- `/release/[slug]` — release page with story, tasting notes and purchase block
+- `/circle` — private access / request access page
+- `/wholesale` — B2B page
+- `/about` — brand positioning
+- `/cart` / `/checkout` — preserved checkout flow
 
 ## Run
 ```bash
@@ -18,20 +17,7 @@ npm install
 npm run dev
 ```
 
-Open:
-
-```text
-http://localhost:3000
-```
-
-## Project structure
-- `app/page.js` — homepage
-- `app/product/[slug]/page.js` — product pages
-- `app/checkout/page.js` — checkout page
-- `data/teas.js` — tea catalog data and copy
-- `components/CartContext.jsx` — cart state
-- `components/CartDrawer.jsx` — side cart
-
 ## Notes
-- Current tea images are premium placeholder artwork in SVG format. Replace files in `public/tea/` with real tea photography later.
-- Payment is UI-only for now. Real payment provider integration can be added later.
+- Existing `/product/[slug]` URLs redirect to `/release/[slug]`
+- Cart and checkout data remain in localStorage
+- Auth, account, roles and private backend logic are intentionally left for the next backend phase

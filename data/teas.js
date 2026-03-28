@@ -1,187 +1,178 @@
-export const teas = [
+export const releases = [
   {
     id: 1,
-    slug: 'wild-lapsang-souchong',
+    slug: 'tongmu-smoke-drop-01',
     image: '/tea/wild-lapsang.png',
     gallery: [
       '/gallery/wild-lapsang-leaf.png',
       '/gallery/wild-lapsang-cup.png',
       '/gallery/wild-lapsang-pack.png',
     ],
-    badge: 'Limited Release',
+    releaseName: 'Tongmu Smoke Drop 01',
+    teaName: 'Wild Lapsang Souchong',
     batch: 'Batch 001',
+    drop: 'Drop 01 — Available Now',
+    harvest: 'Spring 2025',
+    originCountry: 'China',
+    region: 'Fujian · Tongmu-inspired profile',
+    sourceMood: 'Stone, smoke, pinewood warmth',
+    status: 'available',
+    visibility: 'public',
     totalUnits: 120,
     remainingUnits: 37,
-    harvest: 'Spring 2025 · China',
-    status: 'available',
-    origin: 'Tongmu-inspired smoked black tea · China',
-    name: {
-      en: 'Wild Lapsang Souchong',
-      ru: 'Дикий Лапсанг Сушонг',
-      he: 'לאפסאנג סושונג פראי',
+    purchaseLimit: 3,
+    badge: 'Limited Release',
+    shortNotes: 'Smoked pine, resin depth, dry-sweet finish',
+    sizes: [
+      { key: '50g', label: '50 g', price: 79, wholesalePrice: 59 },
+      { key: '100g', label: '100 g', price: 148, wholesalePrice: 112 },
+    ],
+    story:
+      'Selected as the opening dark release for Velmior: a tea with immediate atmosphere, clear identity and enough structure to feel serious rather than theatrical. The smoke is there from the first pour, but it settles into resin, warm wood and a dry sweetness that lingers.',
+    tasting: {
+      aroma: 'Pine smoke, resin, dark wood',
+      body: 'Structured, dry, warming',
+      finish: 'Long, campfire-sweet and persistent',
     },
-    short: {
-      en: 'A bold smoked black tea with pinewood warmth, resin depth and a long, dry-sweet finish that feels dark, atmospheric and memorable.',
-      ru: 'Выразительный копчёный чёрный чай с теплом сосны, смолистой глубиной и долгим суховато-сладким послевкусием.',
-      he: 'תה שחור מעושן ובולט עם חמימות של עץ אורן, עומק שרפי וסיומת ארוכה ומעודנת.',
-    },
-    retailPrice: 79,
-    wholesalePrice: 59,
-    details: {
-      en: {
-        description:
-          'A dark, dramatic smoked tea with resin, pinewood, warm campfire and long dry sweetness. Designed as the boldest tea in the current Velmior release.',
-        growing:
-          'Leaves are selected from mountain tea gardens where cooler air slows growth and helps concentrate aroma. The profile is built around mature leaves that can hold smoke without losing structure.',
-        preparation:
-          'Use 4–5 g per 150 ml. Water 95–98°C. Start with 15–20 seconds for gongfu or 2.5–3 minutes western style. Best in porcelain or clay.',
-        packaging:
-          'Packed in matte aroma-protective pouches with an internal barrier layer. Every pouch is labeled by release so the tea feels more like a curated edition than a commodity.',
-      },
-      ru: {
-        description:
-          'Тёмный копчёный чай со смолой, сосной, костровым теплом и долгой сухой сладостью. Самый смелый чай в текущем релизе Velmior.',
-        growing:
-          'Лист отбирается из горных чайных садов, где прохладный воздух замедляет рост и усиливает аромат. Профиль строится вокруг зрелого листа, который хорошо держит копчение.',
-        preparation:
-          'Используй 4–5 г на 150 мл. Вода 95–98°C. Старт 15–20 секунд для гунфу или 2.5–3 минуты европейским способом. Лучше всего в фарфоре или глине.',
-        packaging:
-          'Упаковывается в матовые пакеты с защитой аромата и внутренним барьерным слоем. Каждая пачка маркируется как отдельный релиз.',
-      },
-      he: {
-        description:
-          'תה כהה ומעושן עם שרף, אורן, חמימות מדורה ומתיקות יבשה ארוכה. זהו התה הדרמטי ביותר במהדורת Velmior הנוכחית.',
-        growing:
-          'העלים נבחרים מגני תה הרריים שבהם האוויר הקריר מאט את הצמיחה ומרכז את הארומה. הפרופיל מבוסס על עלים בשלים שמסוגלים לשאת עישון מבלי לאבד מבנה.',
-        preparation:
-          'השתמש ב-4–5 גרם ל-150 מ״ל. מים בטמפרטורה 95–98°C. התחל ב-15–20 שניות לגונגפו או 2.5–3 דקות בחליטה מערבית.',
-        packaging:
-          'נארז בשקיות מט פרימיום עם שכבת הגנה פנימית לשימור הארומה. כל שקית מסומנת כמהדורה נפרדת.',
-      },
+    sections: {
+      harvest:
+        'Sourced for depth rather than softness. The leaf profile favors mature material that can carry smoke and still keep a clear backbone in the cup.',
+      selection:
+        'Velmior releases this tea only in limited quantity because consistency matters more than volume. Every batch is chosen for aromatic impact and repeatability.',
+      packaging:
+        'Filled into matte aroma-protective pouches labeled by release and batch, so the product feels archived and intentional, not generic.',
     },
   },
   {
     id: 2,
-    slug: 'rou-gui',
+    slug: 'lankaran-spring-2026',
     image: '/tea/rou-gui.png',
     gallery: [
       '/gallery/rou-gui-leaf.png',
       '/gallery/rou-gui-cup.png',
       '/gallery/rou-gui-pack.png',
     ],
-    badge: 'Small Batch',
-    batch: 'Batch 002',
-    totalUnits: 90,
-    remainingUnits: 18,
-    harvest: 'Spring 2025 · Wuyi',
+    releaseName: 'Lankaran Spring 2026',
+    teaName: 'Azerbaijan Black Tea',
+    batch: 'Batch 02 / 05',
+    drop: 'Drop 02 — Available Now',
+    harvest: 'Spring 2026',
+    originCountry: 'Azerbaijan',
+    region: 'Lankaran',
+    sourceMood: 'Sunlit greens, orchard softness, silk texture',
     status: 'low',
-    origin: 'Wuyi oolong · Fujian',
-    name: {
-      en: 'Rou Gui',
-      ru: 'Жоу Гуй',
-      he: 'רו גווי',
+    visibility: 'public',
+    totalUnits: 90,
+    remainingUnits: 8,
+    purchaseLimit: 2,
+    badge: 'Almost Sold Out',
+    shortNotes: 'Apricot skin, tea rose, honeyed black leaf',
+    sizes: [
+      { key: '50g', label: '50 g', price: 84, wholesalePrice: 61 },
+      { key: '100g', label: '100 g', price: 158, wholesalePrice: 118 },
+    ],
+    story:
+      'A warmer, softer expression chosen to represent the Azerbaijan side of the Velmior story. This release is about elegance over force: floral lift, black tea depth and a texture that feels generous without heaviness.',
+    tasting: {
+      aroma: 'Tea rose, dried apricot, warm leaf',
+      body: 'Silky, medium-bodied, polished',
+      finish: 'Honeyed and clean with soft floral lift',
     },
-    short: {
-      en: 'A polished Wuyi oolong with cinnamon bark, roasted stone-fruit warmth and a mineral body that stays elegant from the first sip to the last steep.',
-      ru: 'Отточенный уишаньский улун с корой корицы, теплом запечённых косточковых фруктов и минеральной глубиной во вкусе.',
-      he: 'אולונג ווּיי מלוטש עם קליפת קינמון, חמימות של פרי גלעין קלוי וגוף מינרלי מאוזן.',
-    },
-    retailPrice: 89,
-    wholesalePrice: 67,
-    details: {
-      en: {
-        description:
-          'A spice-driven Wuyi oolong with mineral depth, warmth and a polished roast. It is the most versatile tea in the line for both personal drinking and upscale gifting.',
-        growing:
-          'Rou Gui bushes are cultivated in rocky Wuyi terrain where drainage, stone and fog shape the famous yancha structure. Slow mountain growth creates dense aromatic leaves.',
-        preparation:
-          'Use 5 g per 120 ml. Water 96–100°C. Quick first infusion of 10–15 seconds with short successive steeps. Also works as a richer western infusion for 2 minutes.',
-        packaging:
-          'Each pouch is filled to order in a controlled clean workspace and sealed immediately to preserve roast character and spice lift.',
-      },
-      ru: {
-        description:
-          'Пряный уишаньский улун с минеральной глубиной, теплом и аккуратной прожаркой. Самый универсальный чай линейки для личного употребления и подарка.',
-        growing:
-          'Кусты Rou Gui выращиваются в скалистом рельефе Уишани, где камень, дренаж и туман формируют структуру yancha. Медленный рост даёт плотный ароматный лист.',
-        preparation:
-          'Используй 5 г на 120 мл. Вода 96–100°C. Первая проливка 10–15 секунд и далее короткие проливы. Подходит и для более насыщенной европейской заварки около 2 минут.',
-        packaging:
-          'Каждый пакет фасуется под заказ в чистой зоне и сразу герметично запаивается, чтобы сохранить прожарку и пряность.',
-      },
-      he: {
-        description:
-          'אולונג וּיי עשיר בתבלינים עם עומק מינרלי, חום וקלייה מלוטשת. זהו התה הרב-תכליתי ביותר בקו.',
-        growing:
-          'שיחי Rou Gui גדלים בשטח הסלעי של Wuyi, שם האבן, הניקוז והערפל יוצרים את מבנה ה-yancha הידוע. צמיחה הררית איטית מייצרת עלים צפופים ועשירים.',
-        preparation:
-          'השתמש ב-5 גרם ל-120 מ״ל. מים בטמפרטורה 96–100°C. חליטה ראשונה קצרה של 10–15 שניות עם חליטות המשך קצרות.',
-        packaging:
-          'כל שקית נמלאת לפי הזמנה בסביבת עבודה נקייה ונאטמת מיד כדי לשמור על אופי הקלייה והתבלינים.',
-      },
+    sections: {
+      harvest:
+        'Selected from spring leaf lots that carry freshness and lift, while still presenting enough depth for a premium black tea release.',
+      selection:
+        'This batch was chosen to create contrast within the line: brighter, greener in mood and more approachable while still feeling rare and curated.',
+      packaging:
+        'Packed in the same release-led format as the Chinese teas, with a lighter visual mood that hints at sunlight and origin without changing the core layout.',
     },
   },
   {
     id: 3,
-    slug: 'zhengyan-rou-gui',
+    slug: 'wuyi-reserve-batch-03',
     image: '/tea/zhengyan-rou-gui.png',
     gallery: [
       '/gallery/zhengyan-leaf.png',
       '/gallery/zhengyan-cup.png',
       '/gallery/zhengyan-pack.png',
     ],
-    badge: 'Collector Grade',
+    releaseName: 'Wuyi Reserve Batch 03',
+    teaName: 'Zhengyan Rou Gui',
     batch: 'Batch 003',
+    drop: 'Drop 03 — Sold Out',
+    harvest: 'Spring 2025',
+    originCountry: 'China',
+    region: 'Core Wuyi',
+    sourceMood: 'Rock, spice, long mineral finish',
+    status: 'soldout',
+    visibility: 'public',
     totalUnits: 60,
     remainingUnits: 0,
-    harvest: 'Spring 2025 · Core Wuyi',
-    status: 'soldout',
-    origin: 'Core Wuyi rock tea',
-    name: {
-      en: 'Zhengyan Rou Gui',
-      ru: 'Чжэньянь Жоу Гуй',
-      he: 'ג׳נגיאן רו גווי',
+    purchaseLimit: 1,
+    badge: 'Sold Out',
+    shortNotes: 'Rock rhyme, spice, mineral length',
+    sizes: [
+      { key: '50g', label: '50 g', price: 129, wholesalePrice: 99 },
+      { key: '100g', label: '100 g', price: 246, wholesalePrice: 186 },
+    ],
+    story:
+      'The flagship release sold through its public allocation. It remains visible as proof of the Velmior model: when a batch is gone, it stays in the archive but it does not come back in the same form.',
+    tasting: {
+      aroma: 'Roasted spice, heated stone, bark',
+      body: 'Dense, mineral, controlled',
+      finish: 'Long, premium and unmistakably rocky',
     },
-    short: {
-      en: 'The flagship expression of the line: deeper rock minerality, refined spice and a long, premium finish that lingers with confidence.',
-      ru: 'Флагман линейки со скальной минеральностью, тонкими специями и долгим премиальным послевкусием.',
-      he: 'מוצר הדגל של הקו עם מינרליות סלעית, תבלינים עדינים וסיומת פרימיום ארוכה.',
+    sections: {
+      harvest:
+        'Drawn from a more mineral environment and chosen for a deeper, more persistent cup profile than the broader line.',
+      selection:
+        'Reserved for clients looking for the most serious, cellar-worthy expression in the release program.',
+      packaging:
+        'Presented as a ceremonial pouch with release labeling, designed to read more like a collector object than a repeat-stock SKU.',
     },
-    retailPrice: 129,
-    wholesalePrice: 99,
-    details: {
-      en: {
-        description:
-          'The prestige offering of the line: deeper minerality, finer roast control and a more persistent aftertaste. This is the tea for clients who want a flagship bottle-equivalent product.',
-        growing:
-          'Sourced from the core rock tea environment where cliff exposure, mineral-rich soil and slower leaf development create the classic “rock rhyme” sensation.',
-        preparation:
-          'Use 5–6 g per 110 ml. Water 98–100°C. Start with very short infusions and increase gradually. The tea opens beautifully across many steeps.',
-        packaging:
-          'Packed in premium-labeled pouches intended to feel ceremonial. Designed for high-end retail shelves, gift sets and private collectors.',
-      },
-      ru: {
-        description:
-          'Флагманская позиция линейки: больше минеральности, тоньше контроль прожарки и заметно более длинное послевкусие. Это чай уровня flagship product.',
-        growing:
-          'Чай происходит из ядра скального региона, где отвесные участки, минеральная почва и медленное развитие листа создают ощущение “скальной рифмы”.',
-        preparation:
-          'Используй 5–6 г на 110 мл. Вода 98–100°C. Начинай с очень коротких проливов и постепенно увеличивай время. Чай красиво раскрывается на многих проливах.',
-        packaging:
-          'Фасуется в премиальные пакеты с акцентом на церемониальность. Подходит для витрин, подарочных наборов и коллекционного формата.',
-      },
-      he: {
-        description:
-          'מוצר הדגל של הקו: יותר מינרליות, שליטה עדינה יותר בקלייה וסיומת ארוכה יותר. זהו תה ללקוחות שמחפשים מוצר-דגל אמיתי.',
-        growing:
-          'מגיע מלב אזור תה הסלע, שם חשיפה לצוקים, קרקע עשירה במינרלים והתפתחות איטית של העלה יוצרים את תחושת ה-“rock rhyme”.',
-        preparation:
-          'השתמש ב-5–6 גרם ל-110 מ״ל. מים בטמפרטורה 98–100°C. התחל בחליטות קצרות מאוד והארך בהדרגה.',
-        packaging:
-          'נארז בשקיות פרימיום עם תחושה טקסית. מתאים למדפי יוקרה, מארזי מתנה ואספנים פרטיים.',
-      },
+  },
+  {
+    id: 4,
+    slug: 'amber-forest-private-lot',
+    image: '/tea/wild-lapsang.png',
+    gallery: [
+      '/gallery/wild-lapsang-leaf.png',
+      '/gallery/wild-lapsang-cup.png',
+      '/gallery/wild-lapsang-pack.png',
+    ],
+    releaseName: 'Amber Forest Private Lot',
+    teaName: 'Experimental Smoked Black',
+    batch: 'Private Batch 01',
+    drop: 'Private Access',
+    harvest: 'Autumn 2025',
+    originCountry: 'China',
+    region: 'Experimental allocation',
+    sourceMood: 'Private, darker, member-gated',
+    status: 'private',
+    visibility: 'members',
+    totalUnits: 24,
+    remainingUnits: 24,
+    purchaseLimit: 1,
+    badge: 'Members Only',
+    shortNotes: 'Experimental smoke profile, hidden allocation',
+    sizes: [{ key: '50g', label: '50 g', price: 149, wholesalePrice: 0 }],
+    story:
+      'A placeholder for the private-release logic: visible inside Velmior Circle and reserved for members, collectors and invite-only clients.',
+    tasting: {
+      aroma: 'Private',
+      body: 'Restricted',
+      finish: 'Invitation only',
+    },
+    sections: {
+      harvest: 'Not publicly disclosed.',
+      selection: 'Released only to approved accounts.',
+      packaging: 'Private-circle presentation.',
     },
   },
 ];
 
-export const getTeaBySlug = (slug) => teas.find((tea) => tea.slug === slug);
+export const teas = releases;
+
+export const getTeaBySlug = (slug) => releases.find((tea) => tea.slug === slug);
+
+export const publicReleases = releases.filter((item) => item.visibility === 'public');

@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/components/CartContext';
-import VelmiorLogo from '@/components/VelmiorLogo';
+import SiteHeader from '@/components/SiteHeader';
+import CartDrawer from '@/components/CartDrawer';
 
 const shippingOptions = [
   { key: 'courier', label: 'Courier delivery', text: 'Fast home delivery across Israel', price: 30 },
@@ -18,20 +19,8 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <header className="border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-4 py-4 md:px-6">
-          <div className="hidden items-center justify-between gap-3 md:flex">
-            <VelmiorLogo compact />
-            <Link href="/" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Continue shopping</Link>
-          </div>
-          <div className="md:hidden">
-            <div className="flex items-center justify-between gap-3">
-              <VelmiorLogo compact />
-              <Link href="/" className="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/30">Shop</Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
+      <CartDrawer />
       <main className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-16">
         <div className="mb-8 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.26em] text-neutral-500">
           <span className="rounded-full border border-white/10 px-3 py-1 text-neutral-200">1. Cart</span>
@@ -42,27 +31,27 @@ export default function CartPage() {
         </div>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <section>
-            <h1 className="display-serif text-4xl md:text-5xl">Your cart</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-neutral-400">Review quantities, choose delivery and continue when the order looks right.</p>
+            <h1 className="display-serif text-4xl md:text-5xl">Release cart</h1>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-neutral-400">Review sizes, delivery and quantities before checkout.</p>
             <div className="mt-8 space-y-4">
               {items.length === 0 ? (
                 <div className="rounded-[2rem] border border-white/10 p-8 text-neutral-400">Your cart is empty.</div>
               ) : items.map((item) => (
-                <div key={item.slug} className="flex gap-4 rounded-[2rem] border border-white/10 bg-white/[0.03] p-4">
-                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border border-white/10"><Image src={item.image} alt={item.name.en} fill className="object-cover" /></div>
+                <div key={`${item.slug}-${item.sizeKey}`} className="flex gap-4 rounded-[2rem] border border-white/10 bg-white/[0.03] p-4">
+                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border border-white/10"><Image src={item.image} alt={item.releaseName} fill className="object-cover" /></div>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
-                        <div className="font-medium">{item.name.en}</div>
-                        <div className="mt-1 text-sm text-neutral-500">{item.origin}</div>
+                        <div className="font-medium">{item.releaseName}</div>
+                        <div className="mt-1 text-sm text-neutral-500">{item.batch} · {item.sizeLabel}</div>
                       </div>
                       <div className="font-medium">₪{item.lineTotal}</div>
                     </div>
-                    <div className="mt-3 text-sm text-neutral-400">₪{item.retailPrice} per 50 g pouch</div>
+                    <div className="mt-3 text-sm text-neutral-400">₪{item.unitPrice} per release pouch</div>
                     <div className="mt-4 flex items-center gap-2">
-                      <button onClick={() => updateQuantity(item.slug, item.quantity - 1)} className="h-9 w-9 rounded-full border border-white/10 text-sm hover:border-white/30">−</button>
+                      <button onClick={() => updateQuantity(item.slug, item.sizeKey, item.quantity - 1)} className="h-9 w-9 rounded-full border border-white/10 text-sm hover:border-white/30">−</button>
                       <div className="min-w-8 text-center text-sm">{item.quantity}</div>
-                      <button onClick={() => updateQuantity(item.slug, item.quantity + 1)} className="h-9 w-9 rounded-full border border-white/10 text-sm hover:border-white/30">+</button>
+                      <button onClick={() => updateQuantity(item.slug, item.sizeKey, item.quantity + 1)} className="h-9 w-9 rounded-full border border-white/10 text-sm hover:border-white/30">+</button>
                     </div>
                   </div>
                 </div>
@@ -75,12 +64,7 @@ export default function CartPage() {
                 {shippingOptions.map((option) => {
                   const active = checkout.shippingType === option.key;
                   return (
-                    <button
-                      key={option.key}
-                      type="button"
-                      onClick={() => updateCheckout({ shippingType: option.key })}
-                      className={`rounded-[1.5rem] border p-4 text-left transition ${active ? 'border-white bg-white text-black' : 'border-white/10 bg-neutral-950 hover:border-white/30'}`}
-                    >
+                    <button key={option.key} type="button" onClick={() => updateCheckout({ shippingType: option.key })} className={`rounded-[1.5rem] border p-4 text-left transition ${active ? 'border-white bg-white text-black' : 'border-white/10 bg-neutral-950 hover:border-white/30'}`}>
                       <div className="text-sm font-medium">{option.label}</div>
                       <div className={`mt-2 text-xs leading-6 ${active ? 'text-black/70' : 'text-neutral-400'}`}>{option.text}</div>
                       <div className="mt-3 text-sm font-semibold">₪{option.price}</div>
@@ -99,12 +83,8 @@ export default function CartPage() {
               <div className="flex justify-between text-neutral-400"><span>Shipping</span><span>₪{shipping}</span></div>
               <div className="flex justify-between text-lg font-semibold"><span>Total</span><span>₪{total}</span></div>
             </div>
-            <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4 text-sm leading-7 text-neutral-400">
-              Delivery choice is saved and carried into checkout automatically.
-            </div>
-            <Link href="/checkout" className={`mt-6 block rounded-full px-6 py-3 text-center text-sm font-medium ${items.length === 0 ? 'pointer-events-none border border-white/10 text-neutral-500' : 'bg-white text-black'}`}>
-              Continue to checkout
-            </Link>
+            <Link href="/checkout" className={`mt-6 block rounded-full px-6 py-3 text-center text-sm font-medium ${items.length === 0 ? 'pointer-events-none border border-white/10 text-neutral-500' : 'bg-white text-black'}`}>Continue to checkout</Link>
+            <Link href="/releases" className="mt-3 block rounded-full border border-white/10 px-6 py-3 text-center text-sm hover:border-white/30">Explore more releases</Link>
           </aside>
         </div>
       </main>
